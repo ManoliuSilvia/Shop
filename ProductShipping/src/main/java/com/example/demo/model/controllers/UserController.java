@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 public class UserController {
     @Autowired
@@ -49,7 +47,7 @@ public class UserController {
         User loginNewUser = userService.loginUser(user.getEmail(),user.getPassword());
         if(loginNewUser != null ){
             model.addAttribute("userLogin",loginNewUser.getFirstName());
-            model.addAttribute("userId",loginNewUser.getId());
+            model.addAttribute("userId",loginNewUser.getUserId());
             return "personal_page";
         }
         else {

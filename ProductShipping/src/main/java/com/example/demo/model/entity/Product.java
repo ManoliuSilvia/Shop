@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Products")
-public class Products {
+public class Product {
     @Id
     @SequenceGenerator(
             name = "products_sequence",
@@ -20,15 +20,14 @@ public class Products {
     private String retailer;
     private Integer price;
     private Integer availableQuantity;
-
-    public Products(Integer product_id, String name, String retailer, Integer price, Integer availableQuantity) {
+    public Product(Integer product_id, String name, String retailer, Integer price, Integer availableQuantity) {
         this.product_id = product_id;
         this.name = name;
         this.retailer = retailer;
         this.price = price;
         this.availableQuantity = availableQuantity;
     }
-    public Products() {
+    public Product() {
         super();
     }
     public Integer getProduct_id() {

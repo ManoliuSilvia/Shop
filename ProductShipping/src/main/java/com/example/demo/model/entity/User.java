@@ -2,9 +2,9 @@ package com.example.demo.model.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -19,31 +19,23 @@ public class User {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Integer id;
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private String address;
     @OneToMany
-    @JoinColumn(name = "id")
-    private List<CartItems> list;
-
-    public List<CartItems> getList() {
-        return list;
-    }
-
-    public void setList(List<CartItems> list) {
-        this.list = list;
-    }
+    @JoinColumn(name = "order_id")
+    private Set<Order> orderList;
 
     public User() {
     }
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
     public String getFirstName() {
         return firstName;
@@ -81,16 +73,16 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(address, user.address);
+        return Objects.equals(userId, user.userId) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(address, user.address);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, password, address);
+        return Objects.hash(userId, firstName, lastName, email, password, address);
     }
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + id +
+                "user_id=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
