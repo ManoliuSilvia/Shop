@@ -16,9 +16,13 @@ public class Product {
             generator = "products_sequence"
     )
     private Integer product_id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "retailer", nullable = false)
     private String retailer;
+    @Column(name = "price", nullable = false)
     private Integer price;
+    @Column(name = "availavle_quantity", nullable = false)
     private Integer availableQuantity;
     public Product(Integer product_id, String name, String retailer, Integer price, Integer availableQuantity) {
         this.product_id = product_id;

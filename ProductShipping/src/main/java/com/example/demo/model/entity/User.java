@@ -20,10 +20,15 @@ public class User {
             generator = "user_sequence"
     )
     private Integer userId;
+    @Column(name = "first_name", nullable = false)
     private String firstName;
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column(name = "email", nullable = false)
     private String email;
+    @Column(name = "password", nullable = false)
     private String password;
+    @Column(name = "address", nullable = false)
     private String address;
     @OneToMany
     @JoinColumn(name = "order_id")
